@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "pvp:block/boss_battle_handler"
+        }
+    }
+}

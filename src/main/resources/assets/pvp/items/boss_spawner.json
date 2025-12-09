@@ -1,0 +1,6 @@
+{
+    "model": {
+        "type": "minecraft:model",
+        "model": "pvp:block/boss_spawner"
+    }
+}

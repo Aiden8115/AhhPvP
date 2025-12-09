@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/glass",
+  "textures": {
+    "all": "pvp:block/strong_glass"
+  }
+}
