@@ -1,0 +1,109 @@
+{
+    "functions": [],
+    "pools": [
+        {
+            "bonus_rolls": 0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "functions": [
+                        {
+                            "add": false,
+                            "count": 1,
+                            "function": "minecraft:set_count"
+                        }
+                    ],
+                    "name": "pvp:fishing_rod",
+                    "weight": 2
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 3,
+                    "functions": [
+                        {
+                            "add": false,
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "max": 2,
+                                "min": 1
+                            },
+                            "function": "minecraft:set_count"
+                        }
+                    ],
+                    "name": "minecraft:player_head"
+                },
+                {
+                    "conditions": [],
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": 8,
+                            "conditions": []
+                        }
+                    ],
+                    "name": "pvp:fireball",
+                    "type": "minecraft:item",
+                    "weight": 5
+                },
+                {
+                    "functions": [
+                        {
+                            "add": false,
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "max": 3,
+                                "min": 1
+                            },
+                            "function": "minecraft:set_count"
+                        }
+                    ],
+                    "name": "pvp:self-res_platform",
+                    "type": "minecraft:item",
+                    "weight": 2
+                },
+                {
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 0,
+                                "max": 16
+                            }
+                        }
+                    ],
+                    "name": "pvp:bed_bug",
+                    "type": "minecraft:item",
+                    "weight": 2
+                },
+                {
+                    "type": "minecraft:empty",
+                    "weight": 21
+                }
+            ],
+            "rolls": {
+                "max": 27,
+                "min": 10,
+                "type": "minecraft:uniform"
+            }
+        },
+        {
+            "bonus_rolls": 0,
+            "entries": [
+                {
+                    "type": "minecraft:empty",
+                    "weight": 3
+                },
+                {
+                    "functions": [],
+                    "name": "pvp:bbu_upgrade_smithing_template",
+                    "type": "minecraft:item",
+                    "weight": 1
+                }
+            ],
+            "rolls": 1
+        }
+    ],
+    "random_sequence": "pvp:battlefield",
+    "type": "minecraft:chest"
+}

@@ -1,0 +1,19 @@
+{
+    "required": true,
+    "package": "com.aiden.pvp.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "mixins": [
+        "IllusionerEntityMixin",
+        "LivingEntityMixin",
+        "PlayerEntityMixin",
+        "accessor.LivingEntityAccessor",
+        "accessor.MobEntityAccessor",
+        "invoker.LivingEntityInvoker"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "overwrites": {
+        "requireAnnotations": true
+	}
+}
