@@ -2,7 +2,6 @@ package com.aiden.pvp.client.render.entity;
 
 import com.aiden.pvp.client.render.entity.state.FishingBobberEntityState;
 import com.aiden.pvp.entities.FishingBobberEntity;
-import com.aiden.pvp.items.FishingRodItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -13,6 +12,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.state.CameraRenderState;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.FishingRodItem;
 import net.minecraft.util.Arm;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
@@ -34,11 +34,6 @@ public class FishingBobberEntityRenderer extends EntityRenderer<FishingBobberEnt
     }
 
     @Override
-    public FishingBobberEntityState createRenderState() {
-        return new FishingBobberEntityState();
-    }
-
-    @Override
     public void render(
             FishingBobberEntityState fishingBobberEntityState,
             MatrixStack matrixStack,
@@ -49,24 +44,25 @@ public class FishingBobberEntityRenderer extends EntityRenderer<FishingBobberEnt
         matrixStack.push();
         matrixStack.scale(0.5F, 0.5F, 0.5F);
         matrixStack.multiply(cameraRenderState.orientation);
-        orderedRenderCommandQueue.submitCustom(matrixStack, LAYER, (entry, vertexConsumer) -> {
-            vertex(vertexConsumer, entry, fishingBobberEntityState.light, 0.0F, 0, 0, 1);
-            vertex(vertexConsumer, entry, fishingBobberEntityState.light, 1.0F, 0, 1, 1);
-            vertex(vertexConsumer, entry, fishingBobberEntityState.light, 1.0F, 1, 1, 0);
-            vertex(vertexConsumer, entry, fishingBobberEntityState.light, 0.0F, 1, 0, 0);
+        orderedRenderCommandQueue.submitCustom(matrixStack, LAYER, (matricesEntry, vertexConsumer) -> {
+            vertex(vertexConsumer, matricesEntry, fishingBobberEntityState.light, 0.0F, 0, 0, 1);
+            vertex(vertexConsumer, matricesEntry, fishingBobberEntityState.light, 1.0F, 0, 1, 1);
+            vertex(vertexConsumer, matricesEntry, fishingBobberEntityState.light, 1.0F, 1, 1, 0);
+            vertex(vertexConsumer, matricesEntry, fishingBobberEntityState.light, 0.0F, 1, 0, 0);
         });
         matrixStack.pop();
         float f = (float)fishingBobberEntityState.pos.x;
         float g = (float)fishingBobberEntityState.pos.y;
         float h = (float)fishingBobberEntityState.pos.z;
-        orderedRenderCommandQueue.submitCustom(matrixStack, RenderLayers.lines(), (entry, vertexConsumer) -> {
-            int i = 16;
+        float i = MinecraftClient.getInstance().getWindow().getMinimumLineWidth();
+        orderedRenderCommandQueue.submitCustom(matrixStack, RenderLayers.lines(), (matricesEntry, vertexConsumer) -> {
+            int j = 16;
 
-            for (int j = 0; j < 16; j++) {
-                float k = percentage(j, 16);
-                float l = percentage(j + 1, 16);
-                renderFishingLine(f, g, h, vertexConsumer, entry, k, l);
-                renderFishingLine(f, g, h, vertexConsumer, entry, l, k);
+            for (int k = 0; k < 16; k++) {
+                float l = percentage(k, 16);
+                float m = percentage(k + 1, 16);
+                renderFishingLine(f, g, h, vertexConsumer, matricesEntry, l, m, i);
+                renderFishingLine(f, g, h, vertexConsumer, matricesEntry, m, l, i);
             }
         });
         matrixStack.pop();
@@ -77,21 +73,21 @@ public class FishingBobberEntityRenderer extends EntityRenderer<FishingBobberEnt
         return player.getMainHandStack().getItem() instanceof FishingRodItem ? player.getMainArm() : player.getMainArm().getOpposite();
     }
 
-    private Vec3d getHandPos(PlayerEntity player, float f, float tickProgress) {
+    private Vec3d getHandPos(PlayerEntity player, float handRotation, float tickProgress) {
         int i = getArmHoldingRod(player) == Arm.RIGHT ? 1 : -1;
         if (this.dispatcher.gameOptions.getPerspective().isFirstPerson() && player == MinecraftClient.getInstance().player) {
-            double m = 960.0 / this.dispatcher.gameOptions.getFov().getValue().intValue();
-            Vec3d vec3d = this.dispatcher.camera.getProjection().getPosition(i * 0.525F, -0.1F).multiply(m).rotateY(f * 0.5F).rotateX(-f * 0.7F);
+            double l = 960.0 / this.dispatcher.gameOptions.getFov().getValue().intValue();
+            Vec3d vec3d = this.dispatcher.camera.getProjection().getPosition(i * 0.525F, -0.1F).multiply(l).rotateY(handRotation * 0.5F).rotateX(-handRotation * 0.7F);
             return player.getCameraPosVec(tickProgress).add(vec3d);
         } else {
-            float g = MathHelper.lerp(tickProgress, player.lastBodyYaw, player.bodyYaw) * (float) (Math.PI / 180.0);
-            double d = MathHelper.sin(g);
-            double e = MathHelper.cos(g);
-            float h = player.getScale();
-            double j = i * 0.35 * h;
-            double k = 0.8 * h;
-            float l = player.isInSneakingPose() ? -0.1875F : 0.0F;
-            return player.getCameraPosVec(tickProgress).add(-e * j - d * k, l - 0.45 * h, -d * j + e * k);
+            float f = MathHelper.lerp(tickProgress, player.lastBodyYaw, player.bodyYaw) * (float) (Math.PI / 180.0);
+            double d = MathHelper.sin(f);
+            double e = MathHelper.cos(f);
+            float g = player.getScale();
+            double h = i * 0.35 * g;
+            double j = 0.8 * g;
+            float k = player.isInSneakingPose() ? -0.1875F : 0.0F;
+            return player.getCameraPosVec(tickProgress).add(-e * h - d * j, k - 0.45 * g, -d * h + e * j);
         }
     }
 
@@ -108,7 +104,9 @@ public class FishingBobberEntityRenderer extends EntityRenderer<FishingBobberEnt
                 .normal(matrix, 0.0F, 1.0F, 0.0F);
     }
 
-    private static void renderFishingLine(float x, float y, float z, VertexConsumer buffer, MatrixStack.Entry matrices, float segmentStart, float segmentEnd) {
+    private static void renderFishingLine(
+            float x, float y, float z, VertexConsumer buffer, MatrixStack.Entry matrices, float segmentStart, float segmentEnd, float getMinimumLineWidth
+    ) {
         float f = x * segmentStart;
         float g = y * (segmentStart * segmentStart + segmentStart) * 0.5F + 0.25F;
         float h = z * segmentStart;
@@ -119,7 +117,12 @@ public class FishingBobberEntityRenderer extends EntityRenderer<FishingBobberEnt
         i /= l;
         j /= l;
         k /= l;
-        buffer.vertex(matrices, f, g, h).color(Colors.BLACK).normal(matrices, i, j, k);
+        buffer.vertex(matrices, f, g, h).color(Colors.BLACK).normal(matrices, i, j, k).lineWidth(getMinimumLineWidth);
+    }
+
+    @Override
+    public FishingBobberEntityState createRenderState() {
+        return new FishingBobberEntityState();
     }
 
     public void updateRenderState(FishingBobberEntity fishingBobberEntity, FishingBobberEntityState fishingBobberEntityState, float f) {
@@ -136,7 +139,7 @@ public class FishingBobberEntityRenderer extends EntityRenderer<FishingBobberEnt
         }
     }
 
-    protected boolean canBeCulled(FishingBobberEntity fishingBobberEntity) {
+    protected boolean canBeCulled(net.minecraft.entity.projectile.FishingBobberEntity fishingBobberEntity) {
         return false;
     }
 }
