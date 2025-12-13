@@ -58,7 +58,7 @@ public class ModItems {
     public static final Item IRON_SWORD = register("iron_sword", Item::new, new Item.Settings().sword(ToolMaterial.IRON, 3, 251));
     public static final Item DIAMOND_SWORD = register("diamond_sword", Item::new, new Item.Settings().sword(ToolMaterial.DIAMOND, 3, 251));
 
-    public static final Item THROWABLE_DAGGER = register("throwable_dagger", Item::new, new Item.Settings().sword(ToolMaterial.IRON, 2, 251));
+    public static final Item THROWABLE_DAGGER = register("throwable_dagger", ThrowableDaggerItem::new, new Item.Settings().sword(ToolMaterial.IRON, 2, 251));
 
     public static final Potion SHORT_INVISIBILITY_POTION = Registry.register(Registries.POTION, Identifier.of(PvP.MOD_ID, "short_invisibility_potion"), new Potion("invisibility", new StatusEffectInstance(StatusEffects.INVISIBILITY, 600, 0)));
     public static final Potion LONG_INVISIBILITY_POTION = Registry.register(Registries.POTION, Identifier.of(PvP.MOD_ID, "long_invisibility_potion"), new Potion("invisibility", new StatusEffectInstance(StatusEffects.INVISIBILITY, 12000, 0)));
