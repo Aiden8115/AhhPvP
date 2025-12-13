@@ -1,0 +1,6 @@
+{
+    "model": {
+        "type": "minecraft:model",
+        "model": "pvp:item/throwing_dagger"
+    }
+}
