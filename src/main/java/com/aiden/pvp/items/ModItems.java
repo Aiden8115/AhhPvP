@@ -27,7 +27,7 @@ public class ModItems {
 
     public static final Item FIREBALL = register("fireball", FireballItem::new, new Item.Settings().maxCount(64).fireproof().useCooldown(0.1F));
     public static final Item SELF_RES_PLATFORM = register("self-res_platform", SelfRescuePlatformItem::new, new Item.Settings().maxCount(64).useCooldown(20.0F).recipeRemainder(Items.BLAZE_ROD));
-    public static final Item BLOCK_EGG = register("block_egg", BlockEggItem::new, new Item.Settings().maxCount(64).fireproof());
+    public static final Item BRIDGE_EGG = register("bridge_egg", BridgeEggItem::new, new Item.Settings().maxCount(64).fireproof());
     public static final Item FISHING_ROD = register("fishing_rod", FishingRodItem::new, new Item.Settings().maxCount(1).fireproof().maxDamage(64));
     public static final Item BED_BUG = register("bed_bug", BedBugItem::new, new Item.Settings().maxCount(16));
 
@@ -95,7 +95,7 @@ public class ModItems {
             ItemGroupEvents.modifyEntriesEvent(RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(PvP.MOD_ID, "assets/pvp"))).register(i -> {
                 i.add(ModItems.FIREBALL);
                 i.add(ModItems.SELF_RES_PLATFORM);
-                i.add(ModItems.BLOCK_EGG);
+                i.add(ModItems.BRIDGE_EGG);
                 i.add(ModItems.FISHING_ROD);
                 i.add(ModItems.BED_BUG);
                 i.add(ModItems.TNT);

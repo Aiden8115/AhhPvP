@@ -1,11 +1,8 @@
 package com.aiden.pvp.entities;
 
 import com.aiden.pvp.PvP;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -15,7 +12,7 @@ import net.minecraft.util.Identifier;
 
 public class ModEntities {
     public static final EntityType<FireballEntity> FIREBALL;
-    public static final EntityType<BlockEggEntity> BLOCK_EGG;
+    public static final EntityType<BridgeEggEntity> BRIDGE_EGG;
     public static final EntityType<FishingBobberEntity> FISHING_BOBBER;
     public static final EntityType<BedBugEntity> BED_BUG;
 
@@ -41,9 +38,9 @@ public class ModEntities {
                         .dropsNothing()
                         .eyeHeight(0.5F)
         );
-        BLOCK_EGG = register(
-                "block_egg",
-                EntityType.Builder.<BlockEggEntity>create(BlockEggEntity::new, SpawnGroup.MISC)
+        BRIDGE_EGG = register(
+                "bridge_egg",
+                EntityType.Builder.<BridgeEggEntity>create(BridgeEggEntity::new, SpawnGroup.MISC)
                         .dimensions(0.25F, 0.25F)
                         .spawnBoxScale(1)
                         .maxTrackingRange(32).trackingTickInterval(5)

@@ -31,7 +31,7 @@ public class PvPClient implements ClientModInitializer {
                 ModEntities.FIREBALL,  // 你的实体类型常量
                 FlyingItemEntityRenderer::new  // 使用投掷物默认渲染器
         );
-        EntityRendererFactories.register(ModEntities.BLOCK_EGG, context ->
+        EntityRendererFactories.register(ModEntities.BRIDGE_EGG, context ->
                 new FlyingItemEntityRenderer<>(context, 1.0F, true)
         );
         EntityRendererFactories.register(ModEntities.BED_BUG, context ->

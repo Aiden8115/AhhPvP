@@ -1,11 +1,9 @@
 package com.aiden.pvp.blocks;
 
 import com.aiden.pvp.PvP;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.client.render.BlockRenderLayer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -22,9 +20,9 @@ public class ModBlocks {
             AbstractBlock.Settings.create()
                     .sounds(BlockSoundGroup.SLIME)
     );
-    public static final Block BLOCK_EGG = register(
-            "block_egg",
-            BlockEggBlock::new,
+    public static final Block EGG_BRIDGE = register(
+            "egg_bridge",
+            EggBridgeBlock::new,
             AbstractBlock.Settings.create()
                     .sounds(BlockSoundGroup.WOOL)
                     .breakInstantly()
