@@ -1,6 +1,6 @@
 {
     "model": {
         "type": "minecraft:model",
-        "model": "pvp:item/block_egg"
+        "model": "pvp:item/bridge_egg"
     }
 }

@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "pvp:item/throwing_dagger"
+        "layer0": "pvp:item/throwable_dagger"
     }
 }
