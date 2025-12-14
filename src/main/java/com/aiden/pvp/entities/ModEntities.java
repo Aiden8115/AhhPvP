@@ -15,6 +15,7 @@ public class ModEntities {
     public static final EntityType<BridgeEggEntity> BRIDGE_EGG;
     public static final EntityType<FishingBobberEntity> FISHING_BOBBER;
     public static final EntityType<BedBugEntity> BED_BUG;
+    public static final EntityType<DaggerEntity> DAGGER;
 
     public static <T extends Entity> EntityType<T> register(String id, EntityType.Builder<T> entityType) {
         return Registry.register(Registries.ENTITY_TYPE,
@@ -67,6 +68,16 @@ public class ModEntities {
                         .dimensions(0.25F, 0.25F)
                         .maxTrackingRange(4)
                         .trackingTickInterval(10)
+        );
+        DAGGER = register(
+                "dagger",
+                EntityType.Builder.create(DaggerEntity::new, SpawnGroup.MISC)
+                        .dropsNothing()
+                        .disableSaving()
+                        .disableSummon()
+                        .dimensions(0.5F, 0.5F)
+                        .maxTrackingRange(4)
+                        .trackingTickInterval(5)
         );
     }
 }
