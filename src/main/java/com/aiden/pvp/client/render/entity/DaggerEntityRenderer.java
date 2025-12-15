@@ -51,11 +51,9 @@ public class DaggerEntityRenderer<T extends DaggerEntity> extends EntityRenderer
         matrixStack.scale(this.scale, this.scale, this.scale);
 
         Vec3d velocity = daggerEntityRenderState.velocity;
-        if (velocity.lengthSquared() > 0.001) { // 避免速度为0时计算错误
-            // 计算速度向量的Yaw角度（水平旋转角度）
+        if (velocity.lengthSquared() > 0.001) {
             float yaw = (float) (MathHelper.atan2(velocity.z, velocity.x) * 180.0 / Math.PI) - 90.0F;
-            // 应用Y轴旋转：面朝实体运动方向
-            matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(yaw));
+            matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(yaw - 45.0F));
         }
 
         matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(95.0F));
