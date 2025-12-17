@@ -1,6 +1,5 @@
 package com.aiden.pvp.client.render.entity;
 
-import com.aiden.pvp.PvP;
 import com.aiden.pvp.client.render.entity.state.DaggerEntityRenderState;
 import com.aiden.pvp.entities.DaggerEntity;
 import com.aiden.pvp.items.ModItems;
@@ -52,8 +51,8 @@ public class DaggerEntityRenderer<T extends DaggerEntity> extends EntityRenderer
 
         Vec3d velocity = daggerEntityRenderState.velocity;
         if (velocity.lengthSquared() > 0.001) {
-            float yaw = (float) (MathHelper.atan2(velocity.z, velocity.x) * 180.0 / Math.PI) - 90.0F;
-            matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(yaw - 45.0F));
+            float yaw = (float) (MathHelper.atan2(velocity.getX(), velocity.getZ()) * 180.0 / Math.PI) - 90.0F;
+            matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(yaw - 135.0F));
         }
 
         matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(95.0F));

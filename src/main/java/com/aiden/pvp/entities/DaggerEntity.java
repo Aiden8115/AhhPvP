@@ -13,7 +13,12 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DaggerEntity extends ProjectileEntity {
+    public List<LivingEntity> hitEntities = new ArrayList<>();
+
     public DaggerEntity(EntityType<? extends DaggerEntity> entityType, World world) {
         super(ModEntities.DAGGER, world);
     }
@@ -24,16 +29,16 @@ public class DaggerEntity extends ProjectileEntity {
         Entity hitEntity =  entityHitResult.getEntity();
         World entityWorld = entityHitResult.getEntity().getEntityWorld();
 
-        if (hitEntity instanceof LivingEntity livingEntity) {
-            if (entityWorld instanceof ServerWorld serverWorld && getOwner() instanceof LivingEntity livingEntity1) {
-                livingEntity.damage(
+        if (hitEntity instanceof LivingEntity hitLivingEntity) {
+            if (entityWorld instanceof ServerWorld serverWorld && getOwner() instanceof LivingEntity attacker) {
+                if (!hitEntities.contains(hitLivingEntity)) hitLivingEntity.damage(
                         serverWorld,
-                        this.getOwner().getDamageSources().mobProjectile(this, livingEntity1),
+                        this.getOwner().getDamageSources().mobProjectile(this, attacker),
                         7.0F
                 );
+                hitEntities.add(hitLivingEntity);
             }
         }
-        this.discard();
     }
 
     @Override
