@@ -1,5 +1,8 @@
 package com.aiden.pvp.entities;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -44,6 +47,46 @@ public class DaggerEntity extends ProjectileEntity {
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
         super.onBlockHit(blockHitResult);
+        BlockState hitBlockState = getEntityWorld().getBlockState(blockHitResult.getBlockPos());
+        if (
+                hitBlockState.isOf(Blocks.GLASS)
+                        || hitBlockState.isOf(Blocks.WHITE_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.LIGHT_GRAY_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.GRAY_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.BLACK_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.BROWN_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.RED_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.ORANGE_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.YELLOW_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.LIME_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.GREEN_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.CYAN_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.LIGHT_BLUE_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.BLUE_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.PURPLE_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.MAGENTA_STAINED_GLASS)
+                        || hitBlockState.isOf(Blocks.PINK_STAINED_GLASS)
+                || hitBlockState.isOf(Blocks.GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.WHITE_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.LIGHT_GRAY_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.GRAY_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.BLACK_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.BROWN_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.RED_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.ORANGE_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.YELLOW_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.LIME_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.GREEN_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.CYAN_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.LIGHT_BLUE_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.BLUE_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.PURPLE_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.MAGENTA_STAINED_GLASS_PANE)
+                        || hitBlockState.isOf(Blocks.PINK_STAINED_GLASS_PANE)
+        ) {
+            getEntityWorld().breakBlock(blockHitResult.getBlockPos(), true, this.getOwner());
+            return;
+        }
         this.discard();
     }
 

@@ -27,7 +27,7 @@ public class ThrowableDaggerItem extends Item {
             float f = -MathHelper.sin(user.getYaw() * ((float)Math.PI / 180)) * MathHelper.cos(user.getPitch() * ((float)Math.PI / 180));
             float g = -MathHelper.sin((user.getPitch() + 0.0F) * ((float)Math.PI / 180));
             float h = MathHelper.cos(user.getYaw() * ((float)Math.PI / 180)) * MathHelper.cos(user.getPitch() * ((float)Math.PI / 180));
-            daggerEntity.setVelocity(f, g, h, 1.5F, 0.0F);
+            daggerEntity.setVelocity(f, g, h, 1.2F, 0.0F);
 
             serverWorld.spawnEntity(daggerEntity);
         }
