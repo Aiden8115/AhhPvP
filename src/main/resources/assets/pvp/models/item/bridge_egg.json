@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "pvp:item/block_egg"
+        "layer0": "pvp:item/bridge_egg"
     }
 }
