@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:smithing_transform",
-    "base": "minecraft:stone_sword",
-    "result": {
-        "id": "pvp:stone_sword"
-    },
-    "template": "pvp:bbu_upgrade_smithing_template"
-}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#pvp:empty",
+  "base": "minecraft:iron_sword",
+  "result": {
+    "id": "pvp:iron_sword"
+  },
+  "template": "pvp:bbu_upgrade_smithing_template"
+}

@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "throwable_dagger",
   "key": {
     "B": "minecraft:iron_block",
     "I": "minecraft:iron_ingot",
