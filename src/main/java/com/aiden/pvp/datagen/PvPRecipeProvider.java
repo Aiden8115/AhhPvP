@@ -47,6 +47,48 @@ public class PvPRecipeProvider extends FabricRecipeProvider {
                         .criterion("has_iron_ingot", this.conditionsFromItem(Items.IRON_INGOT))
                         .group("throwable_dagger")
                         .offerTo(this.exporter);
+                createShaped(RecipeCategory.MISC, ModItems.FIREBALL, 4)
+                        .input('A', Items.BLAZE_POWDER)
+                        .input('B', Items.GUNPOWDER)
+                        .input('C', Items.NETHER_STAR)
+                        .pattern("ABA")
+                        .pattern("BCB")
+                        .pattern("ABA")
+                        .criterion("has_nether_star", this.conditionsFromItem(Items.NETHER_STAR))
+                        .group("fireball")
+                        .offerTo(this.exporter);
+                createShaped(RecipeCategory.MISC, ModItems.GOLDEN_HEAD)
+                        .input('A', Items.RESIN_BRICK)
+                        .input('B', Items.GOLD_INGOT)
+                        .input('C', Items.PLAYER_HEAD)
+                        .pattern("ABA")
+                        .pattern("BCB")
+                        .pattern("ABA")
+                        .criterion("has_player_head", this.conditionsFromItem(Items.PLAYER_HEAD))
+                        .group("golden_head")
+                        .offerTo(this.exporter);
+                createShaped(RecipeCategory.MISC, ModItems.SELF_RES_PLATFORM, 4)
+                        .input('A', Items.SLIME_BLOCK)
+                        .input('B', Items.HEART_OF_THE_SEA)
+                        .input('C', Items.BLAZE_ROD)
+                        .pattern("ABA")
+                        .pattern("BCB")
+                        .pattern("ABA")
+                        .criterion("has_blaze_rod", this.conditionsFromItem(Items.BLAZE_ROD))
+                        .group("self-res_platform")
+                        .offerTo(this.exporter);
+                createShaped(RecipeCategory.MISC, Items.PLAYER_HEAD)
+                        .input('A', Items.POISONOUS_POTATO)
+                        .input('B', Items.ROTTEN_FLESH)
+                        .input('C', Items.LINGERING_POTION)
+                        .input('D', Items.SKELETON_SKULL)
+                        .pattern("ABC")
+                        .pattern("BDB")
+                        .pattern("CBA")
+                        .criterion("has_skeleton_skull", this.conditionsFromItem(Items.SKELETON_SKULL))
+                        .group("player_head")
+                        .offerTo(this.exporter);
+
                 offerBBUUpgradeRecipe(Items.WOODEN_SWORD, ModItems.WOODEN_SWORD);
                 offerBBUUpgradeRecipe(Items.STONE_SWORD, ModItems.STONE_SWORD);
                 offerBBUUpgradeRecipe(Items.IRON_SWORD, ModItems.IRON_SWORD);

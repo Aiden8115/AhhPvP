@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "self-res_platform",
+  "key": {
+    "A": "minecraft:slime_block",
+    "B": "minecraft:heart_of_the_sea",
+    "C": "minecraft:blaze_rod"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 4,
+    "id": "pvp:self-res_platform"
+  }
+}

@@ -1,18 +1,19 @@
 {
     "type": "minecraft:crafting_shaped",
-    "group": "pvp",
-    "pattern": [
-        "ABA",
-        "BCB",
-        "ABA"
-    ],
+    "category": "misc",
+    "group": "fireball",
     "key": {
         "A": "minecraft:blaze_powder",
         "B": "minecraft:gunpowder",
         "C": "minecraft:nether_star"
     },
+    "pattern": [
+        "ABA",
+        "BCB",
+        "ABA"
+    ],
     "result": {
-        "id": "pvp:fireball",
-        "count": 4
+        "count": 4,
+        "id": "pvp:fireball"
     }
 }

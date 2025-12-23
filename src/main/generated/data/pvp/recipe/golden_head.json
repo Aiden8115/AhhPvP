@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "golden_head",
+  "key": {
+    "A": "minecraft:resin_brick",
+    "B": "minecraft:gold_ingot",
+    "C": "minecraft:player_head"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pvp:golden_head"
+  }
+}
