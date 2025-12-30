@@ -1,13 +1,12 @@
 package com.aiden.pvp.datagen;
 
 import com.aiden.pvp.PvP;
-import net.minecraft.advancement.Advancement;
-import net.minecraft.advancement.AdvancementCriterion;
-import net.minecraft.advancement.AdvancementEntry;
-import net.minecraft.advancement.AdvancementFrame;
+import net.minecraft.advancement.*;
+import net.minecraft.advancement.criterion.OnKilledCriterion;
 import net.minecraft.advancement.criterion.TickCriterion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -27,10 +26,9 @@ public class Advancements implements Consumer<Consumer<AdvancementEntry>> {
                         false,
                         false
                 )
-                .criterion(
-                        "on_tick",
-                        TickCriterion.Conditions.createTick()
-                )
+                .criteriaMerger(AdvancementRequirements.CriterionMerger.OR)
+                .criterion("killed_something", OnKilledCriterion.Conditions.createPlayerKilledEntity())
+                .criterion("killed_by_something", OnKilledCriterion.Conditions.createEntityKilledPlayer())
                 .build(advancementEntryConsumer, PvP.MOD_ID + ":pvp_mod/root");
     }
 }
