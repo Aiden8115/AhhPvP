@@ -12,10 +12,15 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.TntEntity;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
@@ -34,6 +39,10 @@ public class PvP implements ModInitializer {
 		ModBlockEntityTypes.initialize();
 		ModEntities.initialize();
 		ModCommand.initialize();
+
+        Item fireballItem = Registries.ITEM.get(Identifier.of(MOD_ID, "fireball"));
+        ProjectileDispenserBehavior projectileDispenserBehavior = new ProjectileDispenserBehavior(fireballItem);
+        DispenserBlock.registerBehavior(fireballItem, projectileDispenserBehavior);
 
 		PayloadTypeRegistry.playC2S().register(ThrowTntC2SPayload.ID, ThrowTntC2SPayload.CODEC);
 		ServerPlayNetworking.registerGlobalReceiver(ThrowTntC2SPayload.ID, ((throwTntC2SPayload, context) -> {

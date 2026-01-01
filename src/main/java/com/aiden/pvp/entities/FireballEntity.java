@@ -32,7 +32,6 @@ import java.util.function.Function;
 
 public class FireballEntity extends ThrownItemEntity {
     private float explosionPower = 12.0F;
-
     private final float explosionDamage = 2.0F;
 
     public FireballEntity(double x, double y, double z, World world, ItemStack stack) {
@@ -45,6 +44,10 @@ public class FireballEntity extends ThrownItemEntity {
 
     public FireballEntity(EntityType<? extends FireballEntity> entityType, World world) {
         super(entityType, world);
+    }
+
+    public FireballEntity(World world, double x, double y, double z, ItemStack stack) {
+        super(ModEntities.FIREBALL, x, y, z, world, stack);
     }
 
     @Override
