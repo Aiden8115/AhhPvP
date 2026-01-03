@@ -3,10 +3,8 @@ package com.aiden.pvp.datagen;
 import com.aiden.pvp.PvP;
 import net.minecraft.advancement.*;
 import net.minecraft.advancement.criterion.OnKilledCriterion;
-import net.minecraft.advancement.criterion.TickCriterion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
