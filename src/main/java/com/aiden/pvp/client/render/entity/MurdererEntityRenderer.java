@@ -18,7 +18,7 @@ import net.minecraft.item.CrossbowItem;
 import net.minecraft.util.Identifier;
 
 public class MurdererEntityRenderer extends MobEntityRenderer<MurdererEntity, MurdererEntityRenderState, MurdererEntityModel> {
-    private static final Identifier TEXTURE = Identifier.ofVanilla("textures/entity/illager/vindicator.png");
+    private static final Identifier TEXTURE = Identifier.ofVanilla("textures/entity/murderer.png");
 
     public MurdererEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new MurdererEntityModel(ctx.getPart(EntityModelLayers.VINDICATOR)), 0.5F);
